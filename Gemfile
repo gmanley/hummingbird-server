@@ -52,6 +52,7 @@ gem 'friendly_id' # slug-urls-are-cool
 gem 'hashie' # Souped-up Hashes
 gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'beta'
 gem 'nokogiri' # Parse MAL XML shit
+gem 'parallel' # Parallelize anything
 gem 'paranoia', '~> 2.0' # Faux deletion
 gem 'ruby-progressbar' # Fancy progress bars for Rake tasks
 gem 'sitemap_generator' # Generate Sitemaps

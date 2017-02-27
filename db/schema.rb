@@ -989,19 +989,16 @@ ActiveRecord::Schema.define(version: 20170215225213) do
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.integer  "item_id",                                null: false
-    t.string   "item_type",      limit: 255,             null: false
-    t.integer  "user_id"
-    t.json     "object",                                 null: false
-    t.json     "object_changes",                         null: false
-    t.integer  "state",                      default: 0
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
     t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "comment",        limit: 255
+    t.text     "object_changes"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
-  add_index "versions", ["user_id"], name: "index_versions_on_user_id", using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.string   "url",               limit: 255,                  null: false
@@ -1028,6 +1025,21 @@ ActiveRecord::Schema.define(version: 20170215225213) do
 
   add_index "votes", ["target_id", "target_type", "user_id"], name: "index_votes_on_target_id_and_target_type_and_user_id", unique: true, using: :btree
   add_index "votes", ["user_id", "target_type"], name: "index_votes_on_user_id_and_target_type", using: :btree
+
+  create_table "wiki_versions", force: :cascade do |t|
+    t.integer  "item_id",                                null: false
+    t.string   "item_type",      limit: 255,             null: false
+    t.integer  "user_id"
+    t.json     "object",                                 null: false
+    t.json     "object_changes",                         null: false
+    t.integer  "state",                      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "comment",        limit: 255
+  end
+
+  add_index "wiki_versions", ["item_type", "item_id"], name: "index_wiki_versions_on_item_type_and_item_id", using: :btree
+  add_index "wiki_versions", ["user_id"], name: "index_wiki_versions_on_user_id", using: :btree
 
   add_foreign_key "anime_castings", "anime_characters"
   add_foreign_key "anime_castings", "people"

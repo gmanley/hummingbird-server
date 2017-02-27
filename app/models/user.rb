@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/LineLength
 # == Schema Information
 #
 # Table name: users
@@ -88,9 +87,9 @@
 #
 #  fk_rails_bc615464bf  (pinned_post_id => posts.id)
 #
-# rubocop:enable Metrics/LineLength
 
 class User < ApplicationRecord
+  has_paper_trail
   include WithCoverImage
   include WithAvatar
 
@@ -214,6 +213,10 @@ class User < ApplicationRecord
     elsif has_role?(:admin, Anime)
       update(title: 'Mod')
     end
+  end
+
+  def admin?
+    self.title == 'Staff' || self.title == 'Mod'
   end
 
   def feed

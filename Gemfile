@@ -70,6 +70,10 @@ gem 'oj_mimic_json' # Hook it in place of JSON gem
 
 gem 'sentry-raven' # Send error data to Sentry
 
+# Admin Panel
+gem 'rails_admin' #admin panel
+gem 'paper_trail' #admin history
+
 group :development, :test do
   gem 'annotate' # Schema annotations inside model-related files
   gem 'dotenv-rails' # Load default ENV

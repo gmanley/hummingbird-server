@@ -40,6 +40,7 @@
 # rubocop:enable Metrics/LineLength
 
 class Manga < ApplicationRecord
+  has_paper_trail
   include Media
   include AgeRatings
 

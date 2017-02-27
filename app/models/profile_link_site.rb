@@ -13,6 +13,7 @@
 # rubocop:enable Metrics/LineLength
 
 class ProfileLinkSite < ApplicationRecord
+  has_paper_trail
   validates_presence_of :name, :validate_find, :validate_replace
 
   def validate_find

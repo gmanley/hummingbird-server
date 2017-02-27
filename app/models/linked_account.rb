@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/LineLength
 # == Schema Information
 #
 # Table name: linked_accounts
@@ -6,7 +5,6 @@
 #  id                 :integer          not null, primary key
 #  encrypted_token    :string
 #  encrypted_token_iv :string
-#  private            :boolean          default(TRUE), not null
 #  share_from         :boolean          default(FALSE), not null
 #  share_to           :boolean          default(FALSE), not null
 #  sync_to            :boolean          default(FALSE), not null
@@ -24,9 +22,9 @@
 #
 #  fk_rails_166e103170  (user_id => users.id)
 #
-# rubocop:enable Metrics/LineLength
 
 class LinkedAccount < ApplicationRecord
+  has_paper_trail
   belongs_to :user, required: true
   # encyrpt the token
   attr_encrypted :token, key: Base64.decode64(ENV['ATTR_ENCRYPT_KEY'])
